@@ -1,0 +1,100 @@
+{
+  "dataset": "CIFAR-10",
+  "seeds": [
+    17,
+    23,
+    42
+  ],
+  "batch_size": 256,
+  "updates": 4096,
+  "hardware": "NVIDIA GeForce RTX 4090",
+  "training_precision": "BF16 autocast in conv trunk, IEEE FP32 in classifier and CST",
+  "dataset_receipt": {
+    "archive_sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+    "train": 45000,
+    "validation": 5000,
+    "test": 10000,
+    "split_seed": 1905,
+    "train_indices_sha256": "fb780010f05528e09c121878f176b05960b9ffad8f81293b0db26cb8897c4148",
+    "val_indices_sha256": "43ade01e0a39cccc6d13a31f387273e36a667248f64665c8bac5f0f1af6845f2",
+    "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+    "channel_mean": [
+      0.49122241139411926,
+      0.482011616230011,
+      0.44632211327552795
+    ],
+    "channel_std": [
+      0.24695749580860138,
+      0.2433752864599228,
+      0.2614886164665222
+    ]
+  },
+  "steps_measured": [
+    512,
+    1024,
+    2048,
+    3072,
+    4096
+  ],
+  "source_receipts_sha256": {
+    "cifar10-cnn-cst-head-from-scratch-20261118-01": "0ead5a17af6bb799c0d94d8b201f7b91f1d453cb2ccd84c45a19c44af113f505",
+    "cifar10-cnn-two-cst-and-profile-20261118-01": "b81168508efdb0d7beeae05df24cb0816e8a8819c6108b86fb39f685be0b1aad",
+    "cifar10-cnn-cst-conv-shortcut-20261118-01": "a7b6c0829534dcbc2fc5f309fada7f682bc488bc68b83b02620081159d0c5677"
+  },
+  "selected_peak_lr": {
+    "baseline": 0.003,
+    "cst_middle": 0.003,
+    "cst_first": 0.009,
+    "cst_shortcut": 0.001
+  },
+  "results": {
+    "baseline": {
+      "top1_seed_order_17_23_42": [
+        87.73,
+        87.88,
+        87.77
+      ],
+      "mean_top1": 87.79333333333334,
+      "sd_top1": 0.07767453465153673,
+      "params": 4978410,
+      "mean_seed_median_update_ms": 4.2280663425723715,
+      "max_peak_alloc_mib": 594.5498046875
+    },
+    "cst-one": {
+      "top1_seed_order_17_23_42": [
+        88.04,
+        88.11,
+        87.97
+      ],
+      "mean_top1": 88.04,
+      "sd_top1": 0.07000000000000028,
+      "params": 1046250,
+      "mean_seed_median_update_ms": 5.994414639038344,
+      "max_peak_alloc_mib": 732.8505859375
+    },
+    "cst-two": {
+      "top1_seed_order_17_23_42": [
+        88.0,
+        88.04,
+        88.21
+      ],
+      "mean_top1": 88.08333333333333,
+      "sd_top1": 0.1115048578911801,
+      "params": 849642,
+      "mean_seed_median_update_ms": 6.655565501811604,
+      "max_peak_alloc_mib": 687.27587890625
+    },
+    "cst-shortcut": {
+      "top1_by_seed": [
+        87.68,
+        87.98,
+        88.11
+      ],
+      "mean_top1": 87.92333333333333,
+      "sd_top1": 0.22052966542697106,
+      "params": 842676,
+      "mean_seed_update_medians_ms": 9.081555996090174,
+      "max_peak_mib": 719.94873046875
+    }
+  }
+}

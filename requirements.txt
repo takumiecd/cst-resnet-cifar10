@@ -1,0 +1,4 @@
+torch>=2.6
+torchvision>=0.21
+pillow
+torchcst[hub] @ git+https://github.com/takumiecd/torchcst.git@1750c5ea6cbefe3d4a7d8f6ba02fd9272df3cf98
