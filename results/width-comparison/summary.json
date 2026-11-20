@@ -1,0 +1,206 @@
+{
+  "protocol": {
+    "width": 4096,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_bytes": 25262096384,
+    "torch": "2.9.1+cu128",
+    "torchvision": "0.24.1+cu128",
+    "cuda": "12.8",
+    "bf16_autocast_convolutions": true,
+    "tf32": false,
+    "data": {
+      "archive_sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+      "train": 45000,
+      "validation": 5000,
+      "test": 10000,
+      "split_seed": 1905,
+      "train_indices_sha256": "fb780010f05528e09c121878f176b05960b9ffad8f81293b0db26cb8897c4148",
+      "val_indices_sha256": "43ade01e0a39cccc6d13a31f387273e36a667248f64665c8bac5f0f1af6845f2",
+      "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+      "channel_mean": [
+        0.49122241139411926,
+        0.482011616230011,
+        0.44632211327552795
+      ],
+      "channel_std": [
+        0.24695749580860138,
+        0.2433752864599228,
+        0.2614886164665222
+      ]
+    },
+    "updates": 4096,
+    "batch_size": 256,
+    "validation_updates": [
+      512,
+      1024,
+      2048,
+      3072,
+      4096
+    ],
+    "seeds": [
+      17,
+      23,
+      42
+    ],
+    "arm_orders": [
+      [
+        "dense",
+        "fixed_atoms",
+        "double_atoms"
+      ],
+      [
+        "fixed_atoms",
+        "double_atoms",
+        "dense"
+      ],
+      [
+        "double_atoms",
+        "dense",
+        "fixed_atoms"
+      ]
+    ],
+    "atom_budgets": {
+      "fixed_atoms": [
+        16384,
+        65536
+      ],
+      "double_atoms": [
+        32768,
+        131072
+      ]
+    },
+    "cst_radius_caps": [
+      64.0,
+      512.0
+    ],
+    "peak_rates": {
+      "dense": 0.003,
+      "stem": 0.009,
+      "middle": 0.003
+    },
+    "anchors": {
+      "dense": "0ead5a17af6bb799c0d94d8b201f7b91f1d453cb2ccd84c45a19c44af113f505",
+      "two_cst": "b81168508efdb0d7beeae05df24cb0816e8a8819c6108b86fb39f685be0b1aad",
+      "source_manifest": "8a7bd80c95090353e57384ffe3237083fbe35ffc584a4825df580f857f13f849",
+      "width4096_native": "ed20eb67fa197b504ff92e73eac7860653b25db94f93d8afc2e5d4015d056938",
+      "width4096_build": "0723f78db07176a0b464c721a2bbfb7b20b7b763469db39c913a4406d798123d",
+      "cnn_driver": "6f558eab8891e51c783817b658613c0f3f2db12b962a309a8e943df4123af0d4",
+      "two_cst_driver": "8b56cf376a7b97f90656537a6d90c6f452e7fc1c1382b23087a769e11fdf7377",
+      "experiment_driver": "14d6e74cab977fa71eb796fa10d085af2a80a3802dc6d7830cacc24cb420417c"
+    }
+  },
+  "timing_definition": "Mean of per-seed median synchronized complete training updates, excluding the first 10 updates and validation.",
+  "memory_definition": "Maximum per-seed peak CUDA allocator use during the fit, before final test evaluation.",
+  "test_definition": "Top-1 on the complete 10,000-image official CIFAR-10 test split at the final checkpoint.",
+  "results": {
+    "2048": {
+      "dense": {
+        "top1_by_seed": [
+          87.73,
+          87.88,
+          87.77
+        ],
+        "paired_delta_by_seed_pp": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_top1": 87.79333333333334,
+        "sd_top1": 0.07767453465153673,
+        "mean_delta_vs_dense_pp": 0.0,
+        "mean_seed_median_update_ms": 4.2280663425723715,
+        "max_peak_alloc_mib": 594.5498046875,
+        "max_peak_reserved_mib": 644.0,
+        "parameters": 4978410,
+        "stem_atoms": 0,
+        "middle_atoms": 0
+      },
+      "two_cst": {
+        "top1_by_seed": [
+          88.0,
+          88.04,
+          88.21
+        ],
+        "paired_delta_by_seed_pp": [
+          0.269999999999996,
+          0.1600000000000108,
+          0.4399999999999977
+        ],
+        "mean_top1": 88.08333333333333,
+        "sd_top1": 0.1115048578911801,
+        "mean_delta_vs_dense_pp": 0.29000000000000153,
+        "mean_seed_median_update_ms": 6.655565501811604,
+        "max_peak_alloc_mib": 687.27587890625,
+        "max_peak_reserved_mib": 724.0,
+        "parameters": 849642,
+        "stem_atoms": 16384,
+        "middle_atoms": 65536
+      }
+    },
+    "4096": {
+      "dense": {
+        "top1_by_seed": [
+          87.54,
+          88.02,
+          88.03
+        ],
+        "paired_delta_by_seed_pp": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_top1": 87.86333333333333,
+        "sd_top1": 0.28005951748392854,
+        "mean_delta_vs_dense_pp": 0.0,
+        "mean_seed_median_update_ms": 5.899336501897778,
+        "max_peak_alloc_mib": 812.1650390625,
+        "max_peak_reserved_mib": 964.0,
+        "parameters": 17852138,
+        "stem_atoms": 0,
+        "middle_atoms": 0
+      },
+      "fixed_atoms": {
+        "top1_by_seed": [
+          88.1,
+          87.76,
+          88.59
+        ],
+        "paired_delta_by_seed_pp": [
+          0.5599999999999881,
+          -0.2599999999999909,
+          0.5600000000000023
+        ],
+        "mean_top1": 88.15,
+        "sd_top1": 0.41725292090050103,
+        "mean_delta_vs_dense_pp": 0.28666666666666646,
+        "mean_seed_median_update_ms": 10.552029496466275,
+        "max_peak_alloc_mib": 1302.97119140625,
+        "max_peak_reserved_mib": 1326.0,
+        "parameters": 878314,
+        "stem_atoms": 16384,
+        "middle_atoms": 65536
+      },
+      "double_atoms": {
+        "top1_by_seed": [
+          88.06,
+          88.4,
+          88.06
+        ],
+        "paired_delta_by_seed_pp": [
+          0.519999999999996,
+          0.38000000000000966,
+          0.030000000000001137
+        ],
+        "mean_top1": 88.17333333333333,
+        "sd_top1": 0.19629909152447472,
+        "mean_delta_vs_dense_pp": 0.3100000000000023,
+        "mean_seed_median_update_ms": 11.831296995903054,
+        "max_peak_alloc_mib": 1318.12841796875,
+        "max_peak_reserved_mib": 1338.0,
+        "parameters": 1205994,
+        "stem_atoms": 32768,
+        "middle_atoms": 131072
+      }
+    }
+  }
+}
